@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Me Leva pro Futuro™ — SXSW 2026 com Sabina Deweik</title>
+  <meta name="description" content="Curadoria estratégica em tempo real do SXSW 2026 por Sabina Deweik. Acompanhe a maior conferência de inovação do mundo com a leitura de quem está dentro.">
+  <meta property="og:title" content="Me Leva pro Futuro™ — SXSW 2026 com Sabina Deweik">
+  <meta property="og:description" content="Curadoria estratégica em tempo real do SXSW 2026. Sem hype. Sem ruído. Com profundidade.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════
+       DESIGN TOKENS
+       ══════════════════════════════════════ */
+    :root {
+      --verde: #00A651;
+      --verde-escuro: #1a2421;
+      --rosa: #F2A7C3;
+      --laranja: #E8683A;
+      --azul: #5BC9D9;
+      --amarelo: #F5D732;
+      --teal: #4a7c74;
+      --preto: #0D0D0D;
+      --branco: #FAFAFA;
+      --creme: #F7F2EC;
+      --bege: #e6d1b1;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Space Grotesk', sans-serif;
+      --font-serif: 'DM Serif Display', serif;
+    }
+
+    /* ══════════════════════════════════════
+       RESET & BASE
+       ══════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--preto);
+      color: var(--branco);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ══════════════════════════════════════
+       TICKER MARQUEE
+       ══════════════════════════════════════ */
+    .ticker {
+      background: var(--amarelo);
+      color: var(--preto);
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════════════
+       HERO
+       ══════════════════════════════════════ */
+    .hero {
+      background: var(--verde);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.06);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '✦';
+      position: absolute;
+      bottom: 40px;
+      right: 60px;
+      font-size: 220px;
+      color: rgba(0,0,0,0.05);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: clamp(0.85rem, 1.3vw, 1rem);
+      letter-spacing: 0.3em;
+      color: var(--amarelo);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 48px;
+      height: 2px;
+      background: var(--amarelo);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      color: var(--branco);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--preto);
+      font-family: var(--font-serif);
+      font-size: 0.78em;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      line-height: 1.65;
+      color: var(--preto);
+      max-width: 540px;
+      margin-bottom: 36px;
+      font-weight: 500;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .badge {
+      background: var(--preto);
+      color: var(--amarelo);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      padding: 8px 16px;
+      border-radius: 100px;
+    }
+    .hero-photo {
+      position: relative;
+    }
+    .hero-photo img {
+      border-radius: 8px;
+      object-fit: cover;
+      width: 100%;
+      max-height: 600px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.25);
+    }
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      width: 100%;
+      height: 100%;
+      border: 3px solid var(--amarelo);
+      border-radius: 8px;
+      z-index: -1;
+    }
+
+    /* ══════════════════════════════════════
+       CTA BUTTONS
+       ══════════════════════════════════════ */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--preto);
+      color: var(--amarelo);
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      padding: 18px 40px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(.22,.68,0,.87);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s;
+    }
+    .cta-btn:hover::after { left: 100%; }
+    .cta-btn:hover {
+      background: var(--amarelo);
+      color: var(--preto);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+    .cta-btn.light {
+      background: var(--amarelo);
+      color: var(--preto);
+    }
+    .cta-btn.light:hover {
+      background: var(--branco);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    }
+    .cta-btn .arrow { transition: transform 0.3s; }
+    .cta-btn:hover .arrow { transform: translateX(4px); }
+
+    /* ══════════════════════════════════════
+       GENERAL SECTIONS
+       ══════════════════════════════════════ */
+    section { padding: 100px 40px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      letter-spacing: 0.3em;
+      opacity: 0.5;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    h2.section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    /* ══════════════════════════════════════
+       DOR / PAIN SECTION
+       ══════════════════════════════════════ */
+    .dor-section { background: var(--creme); color: var(--preto); }
+    .dor-section .section-label { color: var(--laranja); opacity: 1; }
+    .dor-intro {
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 600;
+      line-height: 1.4;
+      max-width: 780px;
+      margin-bottom: 56px;
+    }
+    .dor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-bottom: 56px;
+    }
+    .dor-item {
+      background: var(--preto);
+      color: var(--branco);
+      padding: 40px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      transition: transform 0.3s;
+    }
+    .dor-item:hover { transform: scale(1.02); z-index: 1; }
+    .dor-item:nth-child(2) { background: var(--laranja); color: var(--preto); }
+    .dor-item:nth-child(3) { background: var(--azul); color: var(--preto); }
+    .dor-item:nth-child(4) { background: var(--verde); color: var(--preto); }
+    .dor-item strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .dor-frase {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      line-height: 1.3;
+      color: var(--laranja);
+      max-width: 680px;
+    }
+
+    /* ══════════════════════════════════════
+       O QUE É / OFFER
+       ══════════════════════════════════════ */
+    .oque-section {
+      background: var(--preto);
+      border-top: 4px solid var(--verde);
+    }
+    .oque-section h2 { color: var(--verde); }
+    .oque-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+      margin-top: 56px;
+    }
+    .oque-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+    .oque-text p strong { color: var(--amarelo); }
+    .oque-list { list-style: none; }
+    .oque-list li {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 1rem;
+      line-height: 1.55;
+      transition: padding-left 0.3s;
+    }
+    .oque-list li:hover { padding-left: 8px; }
+    .oque-list li::before {
+      content: '→';
+      color: var(--verde);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ══════════════════════════════════════
+       SXSW CONTEXT
+       ══════════════════════════════════════ */
+    .sxsw-section { background: var(--rosa); color: var(--preto); }
+    .sxsw-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 56px;
+    }
+    .sxsw-card {
+      background: var(--branco);
+      padding: 40px 28px;
+      transition: transform 0.3s;
+    }
+    .sxsw-card:hover { transform: translateY(-4px); }
+    .sxsw-card:nth-child(2) { background: var(--preto); color: var(--branco); }
+    .sxsw-card:nth-child(3) { background: var(--verde); color: var(--preto); }
+    .sxsw-card .num {
+      font-family: var(--font-display);
+      font-size: 3.8rem;
+      line-height: 1;
+      color: var(--laranja);
+      margin-bottom: 12px;
+    }
+    .sxsw-card:nth-child(2) .num { color: var(--amarelo); }
+    .sxsw-card:nth-child(3) .num { color: var(--preto); }
+    .sxsw-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .sxsw-card p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      opacity: 0.8;
+    }
+    .sxsw-insight {
+      margin-top: 56px;
+      background: var(--preto);
+      color: var(--branco);
+      padding: 52px;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      border-radius: 0;
+    }
+    .sxsw-insight blockquote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      line-height: 1.45;
+      flex: 1;
+    }
+    .sxsw-insight blockquote em { color: var(--amarelo); font-style: normal; }
+    .sxsw-insight cite {
+      font-size: 0.82rem;
+      opacity: 0.45;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 16px;
+      font-style: normal;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════
+       SABINA BIO
+       ══════════════════════════════════════ */
+    .sabina-section { background: var(--laranja); color: var(--preto); }
+    .sabina-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .sabina-text h2 { color: var(--preto); }
+    .sabina-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .sabina-text p strong {
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: var(--preto);
+      text-underline-offset: 4px;
+    }
+    .sabina-photo img {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    }
+    .sabina-credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      background: var(--preto);
+    }
+    .cred-item {
+      background: var(--creme);
+      color: var(--preto);
+      padding: 26px;
+      transition: background 0.3s;
+    }
+    .cred-item:hover { background: var(--branco); }
+    .cred-item .icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .cred-item h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .cred-item p { font-size: 0.82rem; line-height: 1.55; opacity: 0.7; }
+
+    /* ══════════════════════════════════════
+       COMO FUNCIONA
+       ══════════════════════════════════════ */
+    .como-section {
+      background: #111;
+      border-top: 4px solid var(--amarelo);
+    }
+    .como-section h2 { color: var(--amarelo); }
+    .dias-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+    .dia-card {
+      background: var(--verde);
+      color: var(--preto);
+      padding: 32px 24px;
+      transition: transform 0.3s;
+    }
+    .dia-card:hover { transform: translateY(-4px); }
+    .dia-card:nth-child(2) { background: var(--rosa); }
+    .dia-card:nth-child(3) { background: var(--azul); }
+    .dia-card:nth-child(4) { background: var(--amarelo); }
+    .dia-card .dia-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .dia-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .dia-card p { font-size: 0.88rem; line-height: 1.6; }
+    .como-extras {
+      background: var(--verde);
+      color: var(--preto);
+      padding: 52px;
+      margin-top: 3px;
+    }
+    .como-extras h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+    }
+    .extras-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .extras-list li {
+      list-style: none;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .extras-list li::before {
+      content: '✓';
+      background: var(--preto);
+      color: var(--amarelo);
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════════
+       PARA QUEM
+       ══════════════════════════════════════ */
+    .paraquem-section { background: var(--branco); color: var(--preto); }
+    .paraquem-section .section-label { color: var(--laranja); }
+    .personas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 56px;
+    }
+    .persona-card {
+      background: var(--preto);
+      color: var(--branco);
+      padding: 40px 28px;
+      transition: transform 0.3s;
+    }
+    .persona-card:hover { transform: scale(1.02); }
+    .persona-card:nth-child(2) { background: var(--azul); color: var(--preto); }
+    .persona-card:nth-child(3) { background: var(--rosa); color: var(--preto); }
+    .persona-card .persona-icon { font-size: 2rem; margin-bottom: 16px; }
+    .persona-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+    .persona-card p { font-size: 0.92rem; line-height: 1.7; opacity: 0.85; }
+    .paraquem-nao {
+      margin-top: 56px;
+      border: 2px solid var(--preto);
+      padding: 44px;
+    }
+    .paraquem-nao h3 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      color: var(--laranja);
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+    .nao-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .nao-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      align-items: flex-start;
+    }
+    .nao-list li::before {
+      content: '✕';
+      color: var(--laranja);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════
+       PROVA SOCIAL
+       ══════════════════════════════════════ */
+    .prova-section {
+      background: var(--preto);
+      border-top: 4px solid var(--rosa);
+    }
+    .prova-section h2 { color: var(--rosa); }
+    .depoimento {
+      margin-top: 56px;
+      background: var(--rosa);
+      color: var(--preto);
+      padding: 60px;
+      position: relative;
+    }
+    .depoimento::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 44px;
+      font-family: var(--font-serif);
+      font-size: 9rem;
+      color: var(--rosa);
+      line-height: 1;
+      opacity: 0.25;
+    }
+    .depoimento p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.6vw, 2rem);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+    .depoimento cite {
+      font-style: normal;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      opacity: 0.6;
+      text-transform: uppercase;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 3px;
+    }
+    .stat-item {
+      background: #1a1a1a;
+      padding: 40px 28px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      opacity: 0.5;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════
+       INVESTIMENTO
+       ══════════════════════════════════════ */
+    .invest-section { background: var(--preto); }
+    .invest-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .invest-card { padding: 56px 44px; }
+    .invest-card.gratis {
+      background: var(--verde);
+      color: var(--preto);
+    }
+    .invest-card.premium {
+      background: #1a1a1a;
+      color: var(--branco);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .invest-card .tag {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      background: var(--preto);
+      color: var(--amarelo);
+      padding: 6px 14px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    .invest-card.premium .tag {
+      background: var(--amarelo);
+      color: var(--preto);
+    }
+    .invest-card h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .invest-card .preco {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      margin-bottom: 24px;
+      color: var(--preto);
+    }
+    .invest-card.premium .preco {
+      color: var(--amarelo);
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+    }
+    .invest-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      opacity: 0.85;
+    }
+
+    /* ══════════════════════════════════════
+       CTA FINAL
+       ══════════════════════════════════════ */
+    .cta-section {
+      background: var(--amarelo);
+      color: var(--preto);
+      text-align: center;
+      padding: 120px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: 'SXSW 2026';
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: 14vw;
+      color: rgba(0,0,0,0.05);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .cta-section .section-label { color: var(--preto); opacity: 0.45; }
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6.5vw, 6rem);
+      color: var(--preto);
+      line-height: 1;
+      margin-bottom: 24px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 auto 44px;
+      opacity: 0.7;
+      font-weight: 500;
+    }
+    .urgencia {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      background: var(--preto);
+      color: var(--amarelo);
+      padding: 10px 24px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-top: 28px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════ */
+    footer {
+      background: var(--preto);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 44px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--verde);
+      letter-spacing: 0.05em;
+    }
+    .footer-brand span {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.28);
+      font-family: var(--font-body);
+      display: block;
+    }
+    .footer-contact {
+      font-size: 0.85rem;
+      opacity: 0.4;
+      line-height: 1.8;
+      text-align: right;
+    }
+    .footer-contact a { transition: opacity 0.2s; }
+    .footer-contact a:hover { opacity: 1; }
+
+    /* ══════════════════════════════════════
+       SPARKLE
+       ══════════════════════════════════════ */
+    .sparkle {
+      display: inline-block;
+      color: var(--amarelo);
+      font-size: 1.1em;
+      line-height: 1;
+      vertical-align: middle;
+      margin: 0 4px;
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ══════════════════════════════════════
+       SCROLL REVEAL
+       ══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+       ══════════════════════════════════════ */
+    @media (max-width: 960px) {
+      section { padding: 72px 24px; }
+      .hero { padding: 80px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-photo { order: -1; max-width: 400px; margin: 0 auto; }
+      .dor-grid,
+      .oque-body,
+      .sxsw-grid,
+      .sabina-inner,
+      .dias-grid,
+      .personas,
+      .invest-inner,
+      .nao-list,
+      .extras-list,
+      .stats-row { grid-template-columns: 1fr; }
+      .sabina-credentials { grid-template-columns: 1fr 1fr; }
+      .sxsw-insight { flex-direction: column; padding: 36px; }
+      .depoimento { padding: 40px 28px; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-contact { text-align: center; }
+      .cta-section { padding: 80px 24px; }
+      .como-extras { padding: 36px 24px; }
+      .paraquem-nao { padding: 32px 24px; }
+      .invest-card { padding: 40px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+      .hero-photo::after { display: none; }
+      .sabina-credentials { grid-template-columns: 1fr; }
+      .dias-grid { grid-template-columns: 1fr 1fr; }
+      .cta-btn { font-size: 1rem; padding: 16px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ TICKER ═══════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    ★ 12 A 18 DE MARÇO DE 2026 &nbsp;&nbsp;&nbsp; SXSW 2026: ALL TOGETHER NOW &nbsp;&nbsp;&nbsp; CURADORIA ESTRATÉGICA EM TEMPO REAL &nbsp;&nbsp;&nbsp; SABINA DEWEIK NO SXSW &nbsp;&nbsp;&nbsp; ME LEVA PRO FUTURO™ &nbsp;&nbsp;&nbsp; AUSTIN, TEXAS &nbsp;&nbsp;&nbsp; ACESSO GRATUITO &nbsp;&nbsp;&nbsp; ★ 12 A 18 DE MARÇO DE 2026 &nbsp;&nbsp;&nbsp; SXSW 2026: ALL TOGETHER NOW &nbsp;&nbsp;&nbsp; CURADORIA ESTRATÉGICA EM TEMPO REAL &nbsp;&nbsp;&nbsp; SABINA DEWEIK NO SXSW &nbsp;&nbsp;&nbsp; ME LEVA PRO FUTURO™ &nbsp;&nbsp;&nbsp; AUSTIN, TEXAS &nbsp;&nbsp;&nbsp; ACESSO GRATUITO &nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="topo">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">ME LEVA PRO FUTURO™ — SXSW 2026</div>
+      <h1>O que realmente<br>acontece em<br><em>Austin</em><br>você vai saber<br>primeiro.</h1>
+      <p class="hero-sub">
+        Curadoria estratégica em tempo real do SXSW 2026 — sem hype, sem ruído, sem superficialidade. De 12 a 18 de março, a Sabina Deweik estará lá fazendo essa leitura para você.
+      </p>
+      <div class="hero-meta">
+        <span class="badge">★ GRATUITO</span>
+        <span class="badge">12–18 MAR 2026</span>
+        <span class="badge">ACESSO PELO WHATSAPP</span>
+      </div>
+      <a href="https://api.whatsapp.com/send/?phone=5511991778022&text=Quero%20entrar%20na%20comunidade%20Me%20Leva%20pro%20Futuro" class="cta-btn" id="cta-hero">Quero entrar na comunidade <span class="arrow">→</span></a>
+    </div>
+    <div class="hero-photo">
+      <img src="https://static.wixstatic.com/media/3646c4_537dbe99e5574176a4c194a9d860a577~mv2.png/v1/fill/w_660,h_826,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/3646c4_537dbe99e5574176a4c194a9d860a577~mv2.png" alt="Sabina Deweik palestrando" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DOR ═══════════ -->
+<section class="dor-section">
+  <div class="container reveal">
+    <div class="section-label">O PROBLEMA REAL</div>
+    <p class="dor-intro">
+      Você não sofre por falta de informação sobre o SXSW.<br>
+      <strong>Você sofre porque não sabe o que fazer com ela.</strong>
+    </p>
+
+    <div class="dor-grid">
+      <div class="dor-item">
+        <strong>O feed não para.</strong>
+        Posts soltos no LinkedIn. Resumos genéricos. Recortes fora de contexto. Todo mundo reposta. Quase ninguém interpreta.
+      </div>
+      <div class="dor-item">
+        <strong>O ruído virou rotina.</strong>
+        IA. Convergência. Biotech. Futuro do trabalho. Todo mundo fala. Poucos sabem ler o que está por baixo.
+      </div>
+      <div class="dor-item">
+        <strong>A sensação é clara.</strong>
+        Você está reagindo ao mercado. Não antecipando. E isso tem um custo estratégico que a maioria ignora até ser tarde demais.
+      </div>
+      <div class="dor-item">
+        <strong>O SXSW não é o problema.</strong>
+        O problema é não ter quem decodifique o que está realmente acontecendo lá — o que se repete, o que antecipa, o que é hype e o que é mudança estrutural.
+      </div>
+    </div>
+
+    <p class="dor-frase">
+      "Tendência todo mundo comenta.<br>Discernimento é escolha."
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ O QUE É ═══════════ -->
+<section class="oque-section">
+  <div class="container reveal">
+    <div class="section-label">A OFERTA</div>
+    <h2 class="section-title">Isso não é<br>um resumo.<br>É outra coisa.</h2>
+
+    <div class="oque-body">
+      <div class="oque-text">
+        <p>
+          De <strong>12 a 18 de março de 2026</strong>, dentro da comunidade <strong>Me Leva pro Futuro</strong>, você acompanha o SXSW em tempo real — com a leitura de quem está dentro das salas, nos bastidores, conectando o que a imprensa não conecta.
+        </p>
+        <p>
+          Não é conteúdo pós-evento. Não é síntese genérica. É <strong>curadoria estratégica ao vivo</strong> — filtrada por alguém que esteve no palco do SXSW e entende a lógica interna do festival.
+        </p>
+        <p>
+          No ano passado, quem acompanhou disse que teve a sensação de estar lá. Mas com filtro. Esse é o ponto.
+        </p>
+      </div>
+
+      <ul class="oque-list">
+        <li>Principais palestras do dia traduzidas com contexto estratégico</li>
+        <li>Insights quentes direto das salas e bastidores</li>
+        <li>Conexões entre trilhas distintas — o que não aparece em lugar nenhum</li>
+        <li>Sinais emergentes que ainda não viraram tendência</li>
+        <li>Fotos, impressões e movimentos que não aparecem na imprensa</li>
+        <li>Review ao final de cada dia com análise aplicada à nossa realidade</li>
+        <li>Tudo salvo: você lê no seu ritmo, quando puder</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SXSW CONTEXTO ═══════════ -->
+<section class="sxsw-section">
+  <div class="container reveal">
+    <div class="section-label" style="color:var(--preto);opacity:0.45;">POR QUE 2026 É DIFERENTE</div>
+    <h2 class="section-title">O SXSW 2026<br>não é só um<br>festival.</h2>
+
+    <div class="sxsw-grid">
+      <div class="sxsw-card">
+        <div class="num">40</div>
+        <h3>Anos de história</h3>
+        <p>A edição mais especial da história do SXSW. O tema <em>All Together Now</em> não é slogan — é um diagnóstico do tempo que vivemos.</p>
+      </div>
+      <div class="sxsw-card">
+        <div class="num">850+</div>
+        <h3>Sessões de conferência</h3>
+        <p>IA. Biotech. Cidades. Cultura. Futuro do trabalho. Tudo convergindo ao mesmo tempo, pelo mesmo motivo: o humano no centro.</p>
+      </div>
+      <div class="sxsw-card">
+        <div class="num">7</div>
+        <h3>Dias. Uma cidade inteira</h3>
+        <p>Sem centro de convenções. Austin vira palco. Clubhouses temáticos. Uma arquitetura que materializa a convergência do momento.</p>
+      </div>
+    </div>
+
+    <div class="sxsw-insight">
+      <blockquote>
+        "Quando a IA vira infraestrutura, a vantagem competitiva real passa a estar no <em>capital cerebral</em> — nas habilidades que máquinas não automatizam."
+        <cite>McKinsey, 2025 — e é exatamente sobre isso que o SXSW 2026 vai falar.</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ QUEM É SABINA ═══════════ -->
+<section class="sabina-section">
+  <div class="container reveal">
+    <div class="sabina-inner">
+      <div class="sabina-text">
+        <div class="section-label" style="opacity:0.55;letter-spacing:0.3em;">QUEM FAZ ESSA LEITURA</div>
+        <h2 class="section-title">Sabina<br>Deweik.</h2>
+        <p>
+          Futurista, caçadora de tendências e pesquisadora de comportamento com <strong>25 anos de atuação</strong>. Pioneira em coolhunting no Brasil.
+        </p>
+        <p>
+          Acompanha o SXSW há muitos anos — não como espectadora, mas como pesquisadora atenta ao que emerge nas entrelinhas. Em 2022, <strong>esteve no palco do evento como palestrante</strong>. Isso muda completamente a forma de enxergar o festival.
+        </p>
+        <p>
+          Mais do que reportar tendências ou palestras: <strong>traduz mudanças, conecta pontos e constrói sentido</strong> — preparando pessoas e organizações para se antecipar ao futuro que já está em curso.
+        </p>
+      </div>
+
+      <div class="sabina-photo">
+        <img src="https://static.wixstatic.com/media/3646c4_54d5e057def44e05b9c8e60ed492e725~mv2.jpg/v1/fill/w_560,h_660,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3646c4_54d5e057def44e05b9c8e60ed492e725~mv2.jpg" alt="Sabina Deweik" loading="lazy">
+      </div>
+    </div>
+
+    <div class="sabina-credentials" style="margin-top: 56px;">
+      <div class="cred-item">
+        <div class="icon">🎓</div>
+        <h4>Formação</h4>
+        <p>Jornalismo pela PUC-SP. Mestrado em Comunicação e Semiótica (PUC-SP) e em Moda pela Domus Academy, Milão.</p>
+      </div>
+      <div class="cred-item">
+        <div class="icon">🌍</div>
+        <h4>Palcos globais</h4>
+        <p>Speaker no SXSW (2022) e Web Summit. Top Voice LinkedIn. Colunista na Veja SP.</p>
+      </div>
+      <div class="cred-item">
+        <div class="icon">📡</div>
+        <h4>Future Concept Lab</h4>
+        <p>Ex-sócia no Brasil do maior instituto de pesquisa de tendências da Europa, sediado em Milão.</p>
+      </div>
+      <div class="cred-item">
+        <div class="icon">🏛️</div>
+        <h4>Educação executiva</h4>
+        <p>Professora convidada na Fundação Dom Cabral e Startse. Desenvolveu o 1º curso de coolhunting no IED São Paulo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMO FUNCIONA ═══════════ -->
+<section class="como-section">
+  <div class="container reveal">
+    <div class="section-label" style="color:var(--amarelo);opacity:1;">COMO FUNCIONA</div>
+    <h2 class="section-title">7 dias.<br>Ao vivo.<br>Com você.</h2>
+
+    <div class="dias-grid">
+      <div class="dia-card">
+        <div class="dia-num">AM</div>
+        <h3>Manhã</h3>
+        <p>Primeiras impressões do dia: o que está acontecendo nas salas e o que ainda não chegou à imprensa.</p>
+      </div>
+      <div class="dia-card">
+        <div class="dia-num">+</div>
+        <h3>Ao longo do dia</h3>
+        <p>Insights quentes, fotos dos bastidores e conexões entre trilhas distintas — o que só aparece quando você está dentro.</p>
+      </div>
+      <div class="dia-card">
+        <div class="dia-num">PM</div>
+        <h3>Noite</h3>
+        <p>Review do dia com análise aplicada: o que isso significa para o Brasil e para o seu negócio.</p>
+      </div>
+      <div class="dia-card">
+        <div class="dia-num">∞</div>
+        <h3>Sempre disponível</h3>
+        <p>Áudios e mensagens ficam salvos. Você lê no seu ritmo. Sem pressão, sem perder nada.</p>
+      </div>
+    </div>
+
+    <div class="como-extras">
+      <h3>E isso é só o começo. <span class="sparkle">★</span></h3>
+      <ul class="extras-list">
+        <li>Newsletter quinzenal comentada em primeira mão</li>
+        <li>Leituras aprofundadas sobre comportamento, tecnologia e cultura</li>
+        <li>Reflexões estratégicas que conectam presente e futuro</li>
+        <li>Convites para conversas e análises exclusivas</li>
+        <li>Acesso contínuo à comunidade após o SXSW</li>
+        <li>Conteúdo que você não encontra em nenhuma mídia</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PARA QUEM É ═══════════ -->
+<section class="paraquem-section">
+  <div class="container reveal">
+    <div class="section-label">PARA QUEM É</div>
+    <h2 class="section-title">Esse espaço<br>é seu se…</h2>
+
+    <div class="personas">
+      <div class="persona-card">
+        <div class="persona-icon">🧭</div>
+        <h3>Você lidera</h3>
+        <p>Executives e líderes que precisam antecipar movimentos estratégicos — e não querem depender de resumos de terceiros para tomar decisões de futuro.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">⚡</div>
+        <h3>Você empreende</h3>
+        <p>Empreendedores que entendem que tendência é matéria-prima. Que querem transformar sinais do mundo em vantagem competitiva real.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🔭</div>
+        <h3>Você pensa à frente</h3>
+        <p>Para quem entende que, quando a IA vira infraestrutura, o diferencial vira discernimento. E que soberania estratégica não é luxo — é necessidade.</p>
+      </div>
+    </div>
+
+    <div class="paraquem-nao">
+      <h3>E não é sobre…</h3>
+      <ul class="nao-list">
+        <li>Mais um grupo de hype tecnológico sem profundidade</li>
+        <li>Conteúdo genérico que você verá depois na mídia</li>
+        <li>Um "teaser" para vender algo no final</li>
+        <li>Teoria distante da sua realidade e do seu negócio</li>
+        <li>Resumo que simplifica o que precisa de complexidade</li>
+        <li>Lista de tendências sem contexto de aplicação</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROVA SOCIAL ═══════════ -->
+<section class="prova-section">
+  <div class="container reveal">
+    <div class="section-label" style="color:var(--rosa);opacity:1;">O ANO PASSADO</div>
+    <h2 class="section-title">Quem acompanhou<br>sabe a diferença.</h2>
+
+    <div class="depoimento">
+      <p>"A Sabina representa algo raro no mercado hoje: a integração perfeita entre inovação tecnológica e conexão humana genuína. Tivemos a oportunidade de contar com a Sabina na 4ª e 5ª edição do Expert Experience, e posso afirmar sem hesitação: ela entregou as palestras mais elogiadas de ambos os eventos."</p>
+      <cite>— Ricardo Werlang, Co-Founder da Blenduca | Expert em Negócios de Conhecimento</cite>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--verde);">7</div>
+        <div class="stat-label">Dias de cobertura</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--amarelo);">100%</div>
+        <div class="stat-label">Ao vivo, sem delay</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--rosa);">0</div>
+        <div class="stat-label">De ruído, tudo filtrado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INVESTIMENTO ═══════════ -->
+<section class="invest-section">
+  <div class="container reveal">
+    <div class="section-label" style="color:var(--amarelo);opacity:1;margin-bottom:52px;">ACESSO</div>
+
+    <div class="invest-inner">
+      <div class="invest-card gratis">
+        <span class="tag">ACOMPANHAMENTO SXSW</span>
+        <h3>Me Leva<br>pro Futuro™</h3>
+        <div class="preco">Gratuito.</div>
+        <p>
+          O acompanhamento do SXSW 2026 não tem custo. O acesso acontece dentro da comunidade <strong>Me Leva pro Futuro</strong> — que inclui muito mais do que a cobertura do evento.
+        </p>
+        <a href="https://api.whatsapp.com/send/?phone=5511991778022&text=Quero%20entrar%20na%20comunidade%20Me%20Leva%20pro%20Futuro" class="cta-btn" id="cta-gratis">Quero entrar agora <span class="arrow">→</span></a>
+      </div>
+
+      <div class="invest-card premium">
+        <span class="tag">PARA EMPRESAS</span>
+        <h3>Leve o SXSW<br>para o seu time</h3>
+        <div class="preco">Palestra<br>ou Workshop</div>
+        <p style="color:rgba(255,255,255,0.65);">
+          Para organizações que querem transformar os aprendizados do SXSW em estratégia, palestra ou imersão personalizada para seus times.
+        </p>
+        <a href="mailto:sabina@sabinadeweik.com.br?subject=Proposta%20SXSW%202026" class="cta-btn light" id="cta-empresa">Solicitar proposta <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA FINAL ═══════════ -->
+<section class="cta-section" id="entrar">
+  <div class="container">
+    <div class="section-label">O MOMENTO É AGORA</div>
+    <h2>Não fique<br>de fora da<br>conversa.</h2>
+    <p>
+      De 12 a 18 de março, o futuro vai ser construído em Austin. Você pode acompanhar de dentro — com critério, com profundidade, com aplicação real.
+    </p>
+    <a href="https://api.whatsapp.com/send/?phone=5511991778022&text=Quero%20entrar%20na%20comunidade%20Me%20Leva%20pro%20Futuro" class="cta-btn" style="font-size:1.3rem;padding:22px 52px;" id="cta-final">Entrar na comunidade agora <span class="arrow">→</span></a>
+    <div class="urgencia">★ Garanta acesso antes de 12 de março ★</div>
+    <p style="margin-top:20px;font-size:0.85rem;opacity:0.4;">Sem burocracia. Sem compromisso. Se não fizer sentido, basta sair.</p>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-brand">
+    Sabina Deweik
+    <span>Me Leva pro Futuro™</span>
+  </div>
+  <div class="footer-contact">
+    <a href="mailto:sabina@sabinadeweik.com.br">sabina@sabinadeweik.com.br</a><br>
+    <a href="https://api.whatsapp.com/send/?phone=5511991778022">(11) 99177-8022</a><br>
+    <a href="https://www.sabinadeweik.com" target="_blank" rel="noopener">www.sabinadeweik.com</a>
+  </div>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+  // Scroll Reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
