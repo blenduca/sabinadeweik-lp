@@ -1625,6 +1625,48 @@
         padding: 16px 32px;
       }
     }
+
+    /* ══════════════════════════════════════
+       TOAST NOTIFICATION
+       ══════════════════════════════════════ */
+    .toast-notification {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--verde);
+      color: var(--preto);
+      padding: 18px 24px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 3000;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .toast-notification.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .toast-notification .icon {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 600px) {
+      .toast-notification {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
@@ -1992,10 +2034,11 @@
             medida para traduzir tendências em vantagem competitiva.
           </p>
           <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a href="mailto:sabina@sabinadeweik.com.br?subject=Proposta%20SXSW%202026" class="cta-btn light"
-              id="cta-empresa">Solicitar proposta <span class="arrow">→</span></a>
+            <a href="#empresa" class="cta-btn light open-empresa-modal" id="cta-empresa">Solicitar proposta <span
+                class="arrow">→</span></a>
             <a href="./Curadoria Sabina Deweik - SXSW 2026.pdf" download="Curadoria Sabina Deweik - SXSW 2026.pdf"
-              class="cta-btn light" id="cta-formatos">Acesse os formatos <span class="arrow">→</span></a>
+              class="cta-btn light" id="cta-formatos" onclick="showDownloadToast()">Acesse os formatos <span
+                class="arrow">→</span></a>
           </div>
         </div>
       </div>
@@ -2136,8 +2179,8 @@
               <span class="success-icon">🎉</span>
               <h3>Você está dentro!</h3>
               <p>Seus dados foram recebidos. Agora entre no grupo do WhatsApp para acompanhar tudo em tempo real.</p>
-              <a href="https://api.whatsapp.com/send/?phone=5511991778022&text=Oi%20Sabina!%20Acabei%20de%20me%20cadastrar%20na%20comunidade%20Futuro%20Com%20Sabina."
-                class="whatsapp-link" target="_blank" rel="noopener">
+              <a href="https://chat.whatsapp.com/LY7sn74TpERBJlizq6IPkT?mode=gi_t" class="whatsapp-link" target="_blank"
+                rel="noopener">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -2154,6 +2197,99 @@
         </div>
       </form>
     </div>
+  </div>
+
+  <!-- ═══════════ MODAL EMPRESA ═══════════ -->
+  <div class="modal-overlay" id="empresaModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="empresaModalTitle">Solicitar Proposta</h3>
+        <p id="empresaModalSubtitle">Conte um pouco sobre a sua necessidade</p>
+        <button class="modal-close" id="empresaModalClose" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-progress">
+        <div class="progress-dot current" data-step-empresa="1"></div>
+        <div class="progress-dot" data-step-empresa="2"></div>
+        <div class="progress-dot" data-step-empresa="3"></div>
+      </div>
+
+      <form id="empresaForm" novalidate>
+        <div class="modal-body">
+          <!-- STEP 1: Nome + Email -->
+          <div class="form-step active" data-step-empresa="1">
+            <div class="step-label">ETAPA 1 DE 3</div>
+            <div class="step-title">Como podemos te chamar?</div>
+            <div class="form-group">
+              <label for="empresa-nome">Nome completo *</label>
+              <input type="text" id="empresa-nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+              <div class="form-error">Por favor, informe seu nome</div>
+            </div>
+            <div class="form-group">
+              <label for="empresa-email">E-mail corporativo *</label>
+              <input type="email" id="empresa-email" name="email" placeholder="seu@email-da-empresa.com" required
+                autocomplete="email">
+              <div class="form-error">Informe um e-mail válido</div>
+            </div>
+          </div>
+
+          <!-- STEP 2: WhatsApp + Empresa + Cargo -->
+          <div class="form-step" data-step-empresa="2">
+            <div class="step-label">ETAPA 2 DE 3</div>
+            <div class="step-title">Para qual empresa é a proposta?</div>
+            <div class="form-group">
+              <label for="empresa-whatsapp">WhatsApp *</label>
+              <input type="tel" id="empresa-whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required
+                autocomplete="tel">
+              <div class="form-error">Informe seu WhatsApp</div>
+            </div>
+            <div class="form-group">
+              <label for="empresa-empresa">Empresa *</label>
+              <input type="text" id="empresa-empresa" name="empresa" placeholder="Nome da empresa" required>
+              <div class="form-error">Informe o nome da empresa</div>
+            </div>
+            <div class="form-group">
+              <label for="empresa-cargo">Seu cargo</label>
+              <input type="text" id="empresa-cargo" name="cargo" placeholder="Seu cargo na empresa">
+            </div>
+          </div>
+
+          <!-- STEP 3: Interesse -->
+          <div class="form-step" data-step-empresa="3">
+            <div class="step-label">ETAPA 3 DE 3</div>
+            <div class="step-title">O que você está buscando?</div>
+            <div class="form-group">
+              <label for="empresa-interesse">Conte-nos sobre sua necessidade *</label>
+              <textarea id="empresa-interesse" name="interesse" required
+                placeholder="Ex: Queremos uma palestra sobre tendências para 50 líderes em abril..."></textarea>
+              <div class="form-error">Por favor, descreva sua necessidade</div>
+            </div>
+          </div>
+
+          <!-- SUCCESS -->
+          <div class="form-step" data-step-empresa="success">
+            <div class="form-success">
+              <span class="success-icon">✅</span>
+              <h3>Solicitação enviada!</h3>
+              <p>Recebemos as suas informações. Em breve, a equipe da Sabina entrará em contato com você.</p>
+              <button type="button" class="btn-next" onclick="document.getElementById('empresaModalClose').click()"
+                style="margin: 30px auto 0;">Fechar Janela</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer" id="empresaModalFooter">
+          <button type="button" class="btn-back hidden" id="empresaBtnBack">← Voltar</button>
+          <button type="button" class="btn-next" id="empresaBtnNext">Continuar <span>→</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════ TOAST NOTIFICATION ═══════════ -->
+  <div id="downloadToast" class="toast-notification">
+    <span class="icon">📥</span>
+    <span>O download foi iniciado!</span>
   </div>
 
   <!-- ═══════════ SCRIPTS ═══════════ -->
@@ -2367,6 +2503,195 @@
         modalSubtitle.textContent = 'Bem-vindo(a) ao Futuro Com Sabina';
       }
     })();
+
+    // ═══ MODAL EMPRESA ═══
+    (() => {
+      const modal = document.getElementById('empresaModal');
+      const form = document.getElementById('empresaForm');
+      const btnNext = document.getElementById('empresaBtnNext');
+      const btnBack = document.getElementById('empresaBtnBack');
+      const modalFooter = document.getElementById('empresaModalFooter');
+      const modalTitle = document.getElementById('empresaModalTitle');
+      const modalSubtitle = document.getElementById('empresaModalSubtitle');
+      const dots = modal.querySelectorAll('.progress-dot');
+      let currentStep = 1;
+      const totalSteps = 3;
+
+      const stepTitles = {
+        1: { title: 'Solicitar Proposta', sub: 'Conte um pouco sobre a sua necessidade' },
+        2: { title: 'Sua Empresa', sub: 'Para onde enviamos a proposta?' },
+        3: { title: 'Expectativa', sub: 'O que você está buscando para o seu time?' }
+      };
+
+      // Open modal
+      document.querySelectorAll('.open-empresa-modal').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          const firstInput = modal.querySelector('.form-step.active input, .form-step.active textarea');
+          if (firstInput) setTimeout(() => firstInput.focus(), 400);
+        });
+      });
+
+      // Close modal
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      document.getElementById('empresaModalClose').addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // Show step
+      function showStep(step) {
+        modal.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+        const target = modal.querySelector(`.form-step[data-step-empresa="${step}"]`);
+        if (target) target.classList.add('active');
+
+        // Progress dots
+        dots.forEach(d => {
+          const ds = parseInt(d.getAttribute('data-step-empresa'));
+          d.classList.remove('done', 'current');
+          if (ds < step) d.classList.add('done');
+          if (ds === step) d.classList.add('current');
+        });
+
+        // Header
+        if (stepTitles[step]) {
+          modalTitle.textContent = stepTitles[step].title;
+          modalSubtitle.textContent = stepTitles[step].sub;
+        }
+
+        // Back button
+        btnBack.classList.toggle('hidden', step === 1);
+
+        // Next button text
+        if (step === totalSteps) {
+          btnNext.innerHTML = 'Enviar Proposta <span>✓</span>';
+        } else {
+          btnNext.innerHTML = 'Continuar <span>→</span>';
+        }
+
+        const firstInput = target?.querySelector('input, select, textarea');
+        if (firstInput) setTimeout(() => firstInput.focus(), 100);
+      }
+
+      // Validate step
+      function validateStep(step) {
+        const stepEl = modal.querySelector(`.form-step[data-step-empresa="${step}"]`);
+        const requiredFields = stepEl.querySelectorAll('[required]');
+        let valid = true;
+
+        requiredFields.forEach(field => {
+          const group = field.closest('.form-group');
+          group.classList.remove('error');
+
+          if (!field.value.trim()) {
+            group.classList.add('error');
+            valid = false;
+          }
+
+          if (field.type === 'email' && field.value.trim()) {
+            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRe.test(field.value.trim())) {
+              group.classList.add('error');
+              valid = false;
+            }
+          }
+        });
+
+        return valid;
+      }
+
+      // WhatsApp mask
+      const whatsappInput = document.getElementById('empresa-whatsapp');
+      whatsappInput.addEventListener('input', function () {
+        let v = this.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.slice(0, 11);
+        if (v.length > 7) {
+          this.value = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+        } else if (v.length > 2) {
+          this.value = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+        } else if (v.length > 0) {
+          this.value = `(${v}`;
+        }
+      });
+
+      // Next
+      btnNext.addEventListener('click', () => {
+        if (!validateStep(currentStep)) return;
+
+        if (currentStep < totalSteps) {
+          currentStep++;
+          showStep(currentStep);
+        } else {
+          submitForm();
+        }
+      });
+
+      // Back
+      btnBack.addEventListener('click', () => {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+
+      // Enter key to advance
+      form.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          btnNext.click();
+        }
+      });
+
+      // Submit
+      function submitForm() {
+        const originalText = btnNext.innerHTML;
+        btnNext.innerHTML = 'Enviando...';
+        btnNext.disabled = true;
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        data.origem = "Landing Page SXSW 2026";
+        data.tipo = "Solicitação de Proposta";
+
+        fetch('https://automacao.bagents.cloud/webhook/9fa08c57-3cec-48c1-8b78-758d10528cf5', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }).then(response => {
+          modal.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+          modal.querySelector('.form-step[data-step-empresa="success"]').classList.add('active');
+          modalFooter.style.display = 'none';
+          dots.forEach(d => d.classList.add('done'));
+          modalTitle.textContent = 'Enviado!';
+          modalSubtitle.textContent = 'Obrigado pelo seu interesse';
+        }).catch(error => {
+          console.error("Erro ao enviar webhook:", error);
+          alert('Houve um erro ao enviar sua solicitação. Por favor, tente novamente.');
+          btnNext.innerHTML = originalText;
+          btnNext.disabled = false;
+        });
+      }
+    })();
+
+    // ═══ DOWNLOAD TOAST ═══
+    function showDownloadToast() {
+      const toast = document.getElementById('downloadToast');
+      // Mostrar o toast
+      toast.classList.add('show');
+
+      // Esconder o toast depois de 4 segundos
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
+    }
   </script>
 
 </body>
