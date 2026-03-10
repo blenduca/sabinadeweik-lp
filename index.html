@@ -2466,41 +2466,36 @@
 
       // Submit
       function submitForm() {
+        const originalText = btnNext.innerHTML;
+        btnNext.innerHTML = 'Enviando...';
+        btnNext.disabled = true;
+
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        // Log data (replace with Google Forms/Sheets endpoint later)
-        console.log('Lead captured:', data);
+        data.origem = "Landing Page SXSW 2026";
+        data.tipo = "Entrar na comunidade";
 
-        // ── Google Forms integration ──
-        // To connect to Google Forms, create a form with matching fields,
-        // then uncomment and update the URL + entry IDs below:
-        //
-        // const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
-        // const formBody = new URLSearchParams({
-        //   'entry.XXXXXX': data.nome,
-        //   'entry.XXXXXX': data.email,
-        //   'entry.XXXXXX': data.whatsapp,
-        //   'entry.XXXXXX': data.cidade,
-        //   'entry.XXXXXX': data.cargo,
-        //   'entry.XXXXXX': data.empresa,
-        //   'entry.XXXXXX': data.como_conheceu,
-        //   'entry.XXXXXX': data.interesse,
-        // });
-        // fetch(GOOGLE_FORM_URL, {
-        //   method: 'POST',
-        //   mode: 'no-cors',
-        //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        //   body: formBody.toString()
-        // }).catch(() => {});
-
-        // Show success
-        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-        document.querySelector('.form-step[data-step="success"]').classList.add('active');
-        modalFooter.style.display = 'none';
-        dots.forEach(d => d.classList.add('done'));
-        modalTitle.textContent = 'Tudo certo!';
-        modalSubtitle.textContent = 'Bem-vindo(a) ao Futuro Com Sabina';
+        fetch('https://automacao.bagents.cloud/webhook/a286c9fc-bfa8-468b-b44b-46c1256ceeb6', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }).then(response => {
+          // Show success
+          document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+          document.querySelector('.form-step[data-step="success"]').classList.add('active');
+          modalFooter.style.display = 'none';
+          dots.forEach(d => d.classList.add('done'));
+          modalTitle.textContent = 'Tudo certo!';
+          modalSubtitle.textContent = 'Bem-vindo(a) ao Futuro Com Sabina';
+        }).catch(error => {
+          console.error("Erro ao enviar webhook:", error);
+          alert('Houve um erro ao enviar sua solicitação. Por favor, tente novamente.');
+          btnNext.innerHTML = originalText;
+          btnNext.disabled = false;
+        });
       }
     })();
 
