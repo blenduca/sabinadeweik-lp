@@ -1,0 +1,40 @@
+{
+  "funil": {
+    "_leia": "O hostname de produção deste ativo. A auditoria parte DAQUI, não do nome do projeto.",
+    "publico": true,
+    "motivo": "funil de captação",
+    "contatos_publicos": [
+      "sabina@sabinadeweik.com.br",
+      "5511991778022",
+      "seu@email.com",
+      "seu@email-da-empresa.com",
+      "(11) 99999-9999",
+      "(99) 99999-9999"
+    ],
+    "_contatos_leia": "O que esta página expõe DE PROPÓSITO. Placeholders de formulário entram aqui porque são texto da página, não dado de ninguém.",
+    "dominio": "funil-sabina-lp.potenzia.digital",
+    "servindo": {
+      "medido_em": "2026-09-04T12:18:15.832Z",
+      "alias": 200,
+      "pages_dev": 200,
+      "dominio": 200,
+      "dominio_e_este_deploy": false,
+      "noindex": false
+    },
+    "pii": {
+      "medido_em": "2026-09-04T12:18:26.715Z",
+      "arquivos_varridos": 1,
+      "achados": 0
+    }
+  },
+  "deploy": {
+    "_leia": "Quem subiu, quando e o quê. O token é de máquina e não identifica ninguém; este bloco é a atribuição.",
+    "quem": "suporte@ricardowerlang.com.br",
+    "quando": "2026-09-04T12:18:26.714Z",
+    "projeto": "funil-sabina-lp",
+    "deploy_id": "afbf9126-c290-4615-88d1-f90da876c3bb",
+    "url": "https://afbf9126.funil-sabina-lp.pages.dev",
+    "sem_protecao": true,
+    "motivo": "funil de captação"
+  }
+}
